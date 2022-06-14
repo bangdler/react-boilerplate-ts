@@ -23,6 +23,9 @@ babel-loader : 바벨(babel)과 웹팩(webpack)을 연결해준다.
 - json 은 기본적으로 처리가 가능하다.
 - file loader : png, gif, jpg 처리
 - raw loader : text 처리
-
+- ts loader 대신 babel loader 에 preset @babel/preset-typescript 사용
 ### 리액트
-styled-components 설치
+styled-components 설치 - @types/styled-components 설치해야함.
+
+### 기타
+dotenv 설치
