@@ -1,8 +1,10 @@
 const path = require("path");
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+
+const dotenv = require('dotenv');
+const webpack = require('webpack');
+dotenv.config();
 
 const port = process.env.PORT || 3000;
 
@@ -63,12 +65,16 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'public/index.html',
         }),
+        new webpack.DefinePlugin({
+            'process.env': JSON.stringify(process.env),
+        }),
     ],
 
     // 개발 서버 설정
     devServer: {
         host: 'localhost',
         port: port,
+        historyApiFallback: true,
         open: true, // open page when start
     },
 };
