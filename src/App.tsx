@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import "./app.css"
+import "@/app.css"
 
 function App() {
     return (<>
