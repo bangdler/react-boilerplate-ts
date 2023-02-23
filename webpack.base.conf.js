@@ -1,10 +1,9 @@
 const path = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+// const CopyPlugin = require('copy-webpack-plugin');
 const dotenv = require('dotenv');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const aliases =require('./aliases')
 
@@ -15,13 +14,12 @@ dotenv.config({
 module.exports = {
   name: 'react-typescript', // 웹팩 설정 이름
 
-  // 애플리케이션 시작 경로
-  entry: path.resolve(__dirname, 'src/index.tsx'),
-
-  // 번들된 파일 경로
+  entry: {
+    app: path.resolve(__dirname, 'src/index.tsx')
+  },
   output: {
-    path: path.join(__dirname, 'dist'), //빌드 위치
-    filename: 'app.js', //웹팩 빌드 후 최종적으로 만들어질 파일
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].bundle.js',
     publicPath: '/',
   },
 
@@ -62,7 +60,6 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env),
     }),
-    new MiniCssExtractPlugin(),
     // new CopyPlugin({
     //   patterns: [
     //     { from: 'public/meta' }, // meta 폴더를 dist 에 복사
