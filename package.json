@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=development webpack serve --open --config webpack.dev.conf.js",
-    "build": "NODE_ENV=production webpack --config webpack.prod.conf.js",
-    "check-types": "tsc"
+    "start": "NODE_ENV=development webpack serve --config webpack.dev.conf.js",
+    "build": "npm run check-types && NODE_ENV=production webpack --config webpack.prod.conf.js",
+    "check-types": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
     "@svgr/webpack": "^6.5.1",
+    "@types/node": "^18.14.1",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
     "@types/styled-components": "^5.1.25",
